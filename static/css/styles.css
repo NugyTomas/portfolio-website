@@ -1,0 +1,83 @@
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #1B3C53;
+    background-color: #F9F3EF;
+    font-family: "Outfit", sans-serif;
+
+}
+
+nav {
+    padding: .5rem 1rem;
+    background-color: #1B3C53;
+    font-size: 1.1rem;
+}
+
+.nav-link {
+    color: #D2C1B6;
+}
+
+.nav-link:hover {
+    border-color: #F9F3EF;
+    color: #F9F3EF;
+}
+
+.btn-contact {
+    background-color: #D2C1B6;
+    color: #1B3C53;
+    border-radius: 1rem;
+}
+
+.btn-contact:hover {
+    background-color: #F9F3EF;
+    border-color: #F9F3EF;
+    color: #1B3C53;
+}
+
+.logo_img {
+    padding-top: 3rem;
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+}
+
+h1,h2,h3{
+    letter-spacing: 1px;
+}
+
+.hero {
+    min-height: calc(100vh - 80px);
+}
+
+.portrait_img {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+}
+
+.about {
+    min-height: calc(100vh - 120px);
+    padding-bottom: 3rem;
+}
+
+.about p {
+    color: #456882;
+    font-size: 1.2rem;
+     letter-spacing: 0.5px;
+}
+
+.workplace_img {
+    width: 100%;
+    height: auto;
+}
+
+.dev-journey{
+     min-height: calc(100vh - 120px);
+}
+
+
+
+
+
