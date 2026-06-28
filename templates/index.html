@@ -8,37 +8,49 @@
                 <p class="pb-3">I'm a self-taught Python developer, electrical designer and a cat lover. I enjoy
                     building web
                     applications,
-                    automating repetitive tasks, analyzing data and cooperation with AI. I enjoy doing sports in any
+                    automating repetitive tasks, analyzing data and cooperating with AI. I enjoy doing sports in any
                     form and
                     I do
                     love a
                     good cup of coffee!</p>
                 <img src="{{ url_for('static', filename='assets/img/workplace.png') }}"
-                     alt="photo of me and cats working together" class="workplace_img"/>
+                     alt="photo of me and cats working together" class="workplace_img">
             </div>
         </div>
     </div>
 </section>
 
 <section class="projects mb-4">
-    <div class="container">
-        <h2 class="mb-3 text-center">Projects</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="container ">
+        <h2 class="mb-4 text-center">Projects</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for project in projects: %}
             <div class="col">
-                <div class="card shadow-lg">
-                    <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225"
-                         preserveAspectRatio="xMidYMid slice" role="img" width="100%"
-                         xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect>
-                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </svg>
-                    <div class="card-body"><p class="card-text">This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="card shadow-sm">
+                    <div class="card-image-container">
+                        <img src="{{ url_for('static', filename='assets/img/' + project.image) }}"
+                             alt="project screenshot" class="card-img">
+                        <a href="{{ project.github_link }}" target="_blank">
+                            🔗 View on GitHub
+                        </a>
+                    </div>
+
+                    <div class="card-body">
+                        <h4 class="mb-3 mt-2 project-title">{{ project.name }}</h4>
+                        <p class="card-text ">{{project.description}}</p>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="https://github.com/NugyTomas" class="see-projects">
+                See all projects
+                <span>→</span>
+            </a>
         </div>
     </div>
+
 </section>
 
 
