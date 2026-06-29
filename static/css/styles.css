@@ -224,6 +224,60 @@ nav {
 /* =========================================
    CONTACT
 ========================================= */
+.contact label {
+    margin-bottom: .7rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1B3C53;
+}
+
+.contact input,
+.contact textarea {
+    margin-bottom: 1.5rem;
+    padding: .9rem 1rem;
+    border: none;
+    border-radius: 12px;
+    outline: 2px solid #456882;
+    outline-offset: 3px;
+    background-color: #F9F3EF;
+    transition: outline-offset .3s ease;
+}
+
+.contact textarea{
+    margin-bottom: 2rem;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    outline-offset: 10px;
+}
+
+.contact button{
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    outline: 2px solid #456882;
+    transition: transform .4s;
+    color: #1B3C53;
+}
+
+.contact button:hover{
+    transform: scale(1.1);
+}
+
+.contact button span {
+    display: inline-block;
+    transition: transform .3s ease;
+}
+
+.contact button:hover span {
+    transform: translateX(5px);
+}
+
+
+
+
 
 
 
