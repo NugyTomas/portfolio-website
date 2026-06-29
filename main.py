@@ -49,12 +49,21 @@ with app.app_context():
 #     db.session.add(new_skill)
 #     db.session.commit()
 
+@app.context_processor
+def inject_year():
+    return {
+        "current_year": datetime.now().year
+    }
 
 @app.route('/')
 def home():
     projects = db.session.execute(db.select(Project)).scalars().all()
     skills = db.session.execute(db.select(Skill)).scalars().all()
-    return render_template("index.html",  current_year=datetime.now().year, projects=projects, skills=skills)
+    return render_template("index.html", navbar="contact", projects=projects, skills=skills)
+
+@app.route('/contact')
+def contact():
+    return render_template("contact.html", navbar="home")
 
 
 if __name__ == "__main__":

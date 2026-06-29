@@ -1,4 +1,27 @@
-{% include "header.html" %}
+{% extends "base.html" %}
+
+{% block title %}
+Tomáš Nguyen
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<section class="hero ">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-10 text-center">
+                <img src="{{ url_for('static', filename='assets/img/logos/blue_logo.png') }}" alt="blue logo"
+                     class="logo_img" >
+                <h3>Hi, I'm Tomáš Nguyen</h3>
+                <h1>Self-taught Python Developer</h1>
+                <img src="{{ url_for('static', filename='assets/img/my_portrait.png') }}" alt="my portrait"
+                     class="portrait_img" >
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about mb-4">
@@ -72,7 +95,5 @@
         </div>
     </div>
 </section>
-</main>
 
-
-{% include "footer.html" %}
+{% endblock %}
