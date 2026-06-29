@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -24,8 +25,14 @@ class Project(db.Model):
     featured_on_main_page: Mapped[bool] = mapped_column(Boolean, nullable=False)
 
 
-# with app.app_context():
-#     db.create_all()
+class Skill(db.Model):
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
+    image: Mapped[str] = mapped_column(String(250), nullable=False)
+
+
+with app.app_context():
+    db.create_all()
 
 # new_project = Project(name="Jo Code Translator",
 #                       description="A Python command-line application that translates text to Morse code and vice versa.",
@@ -35,11 +42,19 @@ class Project(db.Model):
 #     db.session.add(new_project)
 #     db.session.commit()
 
+# new_skill = Skill(name="Selenium",
+#                   image="skills/selenium.png")
+#
+# with app.app_context():
+#     db.session.add(new_skill)
+#     db.session.commit()
+
 
 @app.route('/')
 def home():
     projects = db.session.execute(db.select(Project)).scalars().all()
-    return render_template("index.html", projects=projects)
+    skills = db.session.execute(db.select(Skill)).scalars().all()
+    return render_template("index.html",  current_year=datetime.now().year, projects=projects, skills=skills)
 
 
 if __name__ == "__main__":
