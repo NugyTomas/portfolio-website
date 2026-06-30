@@ -7,9 +7,20 @@ Contact Me | Tomáš Nguyen
 {% block content %}
 <section class="contact pt-5">
     <div class="container text-center">
+        {% if error %}
+        <div class="alert alert-danger mb-4" role="alert">
+            <strong>Oh no!</strong> Your message couldn't be sent at the moment. 😕 Please try again later.
+        </div>
+        {% endif %}
+
+        {% if show_success %}
+        <h1 class="justify-content-center">Email sent successfully!<br> I'll get back to you
+            as soon as possible. 🤝</h1>
+        <img src="{{ url_for('static', filename='assets/img/email_received.png') }}"
+             alt="photo of TNG receiving email" class="email-received">
+        {% else %}
         <h1 class="mb-5">
-            I'm happy that you decided to get in touch with me!<br>Feel free to send me a message. I'll get back to you
-            as soon as possible. 🤝
+            I'm happy that you decided to get in touch with me!<br>Feel free to send me a message 💬.
         </h1>
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-4">
@@ -39,6 +50,7 @@ Contact Me | Tomáš Nguyen
                 </form>
             </div>
         </div>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Projects | Tomáš Nguyen
+{% endblock %}
+
+{% block content %}
+<div class="container pt-5 pb-4">
+    <h2 class="mb-4 text-center">Projects</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+        {% for project in projects: %}
+        {% if project.featured_on_main_page %}
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-image-container">
+                    <img src="{{ url_for('static', filename='assets/img/' + project.image) }}"
+                         alt="{{ project.name }} screenshot" class="card-img">
+                    <a href="{{ project.github_link }}" target="_blank">
+                        🔗 View on GitHub
+                    </a>
+                </div>
+
+                <div class="card-body">
+                    <h4 class="mb-3 mt-2 project-title">{{ project.name }}</h4>
+                    <p class="card-text ">{{project.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

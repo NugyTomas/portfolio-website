@@ -219,6 +219,15 @@ nav {
     height: 35px;
     width: 35px;
     object-fit: contain;
+    transition: transform .3s ease;
+}
+
+.TNG-logo-footer {
+    transition: transform .3s ease;;
+}
+
+.svg_logo:hover, .TNG-logo-footer:hover {
+    transform: scale(1.15);
 }
 
 /* =========================================
@@ -243,7 +252,7 @@ nav {
     transition: outline-offset .3s ease;
 }
 
-.contact textarea{
+.contact textarea {
     margin-bottom: 2rem;
 }
 
@@ -252,7 +261,7 @@ nav {
     outline-offset: 10px;
 }
 
-.contact button{
+.contact button {
     font-size: 1.2rem;
     padding: 10px;
     border-radius: 12px;
@@ -262,7 +271,7 @@ nav {
     color: #1B3C53;
 }
 
-.contact button:hover{
+.contact button:hover {
     transform: scale(1.1);
 }
 
@@ -274,6 +283,27 @@ nav {
 .contact button:hover span {
     transform: translateX(5px);
 }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.email-received {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 2rem auto 0;
+    animation: fadeUp .8s ease;
+}
+
 
 
 
