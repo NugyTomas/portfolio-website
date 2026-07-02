@@ -66,12 +66,12 @@ def inject_year():
 def home():
     projects = db.session.execute(db.select(Project)).scalars().all()
     skills = db.session.execute(db.select(Skill)).scalars().all()
-    return render_template("index.html", navbar="contact", projects=projects, skills=skills)
+    return render_template("index.html", projects=projects, skills=skills)
 
 @app.route('/all_projects')
 def all_projects():
     projects = db.session.execute(db.select(Project)).scalars().all()
-    return render_template("projects.html", navbar="completed", projects=projects)
+    return render_template("projects.html", projects=projects)
 
 
 @app.route("/contact", methods=["GET", "POST"])
@@ -82,11 +82,11 @@ def contact():
         if send_email(data):
             return redirect(url_for("contact", sent=1))
 
-        return render_template("contact.html", navbar="home", show_success=False, error=True
+        return render_template("contact.html", show_success=False, error=True
         )
 
     return render_template(
-        "contact.html", navbar="home", show_success=request.args.get("sent"), error=False
+        "contact.html", show_success=request.args.get("sent"), error=False
     )
 
 # =========================================
@@ -120,3 +120,4 @@ def send_email(data):
 # =========================================
 if __name__ == "__main__":
     app.run(debug=True)
+

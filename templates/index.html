@@ -8,23 +8,23 @@ Tomáš Nguyen
 
 <!-- HERO -->
 
-<section class="hero ">
+<section class="hero mb-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-10 text-center">
                 <img src="{{ url_for('static', filename='assets/img/logos/blue_logo.png') }}" alt="blue logo"
-                     class="logo_img" >
+                     class="logo_img">
                 <h3>Hi, I'm Tomáš Nguyen</h3>
                 <h1>Self-taught Python Developer</h1>
                 <img src="{{ url_for('static', filename='assets/img/my_portrait.png') }}" alt="my portrait"
-                     class="portrait_img" >
+                     class="portrait_img">
             </div>
         </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about mb-4">
+<section class="about">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-10 text-center">
@@ -32,11 +32,11 @@ Tomáš Nguyen
                 <p class="pb-3">I'm a self-taught Python developer, electrical designer and a cat lover. I enjoy
                     building web
                     applications,
-                    automating repetitive tasks, analyzing data and cooperating with AI. I enjoy doing sports in any
+                    automating repetitive tasks, analyzing data and cooperating with AI. I'm really into sports in any
                     form and
                     I do
                     love a
-                    good cup of coffee!</p>
+                    good cup of coffee! ☕</p>
                 <img src="{{ url_for('static', filename='assets/img/workplace.png') }}"
                      alt="photo of me and cats working together" class="workplace_img">
             </div>
@@ -47,18 +47,21 @@ Tomáš Nguyen
 <!-- SKILLS -->
 <section class="skills mb-5">
     <div class="container">
-        <h2 class="text-center mb-4">Skills</h2>
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-5">
+        <h2 class="text-center">Skills</h2>
+        <p class="text-center my-4">Technologies I use to build web applications, automate tasks and analyze data.</p>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4 mb-3">
             {% for skill in skills %}
             <div class="col text-center">
                 <img src="{{ url_for('static', filename='assets/img/' + skill.image) }}"
                      alt="{{ skill.name }} logo"
                      class="skill-img mb-4">
-                <h4>{{ skill.name }}</h4>
+                <p>{{ skill.name }}</p>
             </div>
             {% endfor %}
         </div>
+
     </div>
+
 </section>
 
 <!-- PROJECTS -->
@@ -66,7 +69,7 @@ Tomáš Nguyen
     <div class="container">
         <h2 class="mb-4 text-center">Projects</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            {% for project in projects: %}
+            {% for project in projects %}
             {% if project.featured_on_main_page %}
             <div class="col">
                 <div class="card shadow-sm">

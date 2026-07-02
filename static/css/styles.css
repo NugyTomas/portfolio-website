@@ -16,6 +16,11 @@ h1, h2, h3, h4 {
     letter-spacing: 1px;
 }
 
+h2 {
+    font-size: clamp(2rem, 5vw + .8rem, 2.5rem);
+}
+
+
 /* =========================================
    NAVBAR
 ========================================= */
@@ -51,15 +56,22 @@ nav {
    HERO
 ========================================= */
 
-.hero {
-    min-height: calc(100vh - 80px);
-}
+
 
 .logo_img {
     max-width: 260px;
     width: 100%;
     height: auto;
 }
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw + .8rem, 3rem);
+}
+
+.hero h3 {
+    font-size: clamp(1rem, 5vw + .8rem, 2rem);
+}
+
 
 .portrait_img {
     max-width: 800px;
@@ -78,29 +90,37 @@ nav {
 
 .about p {
     color: #456882;
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1vw + .8rem, 1.25rem);
     letter-spacing: 0.5px;
+    line-height: 1.7;
 
 }
 
 .workplace_img {
     max-width: 100%;
     height: auto;
+    margin: 1rem 0;
 }
 
 /* =========================================
     SKILLS
 ========================================= */
 .skill-img {
-    width: 125px;
-    height: 125px;
+    width: clamp(70px, 9vw, 125px);
+    height: clamp(70px, 9vw, 125px);
     object-fit: contain;
+    transition: transform .3s ease;
 }
 
-.skills h4 {
+.skill-img:hover {
+    transform: scale(1.08);
+}
+
+.skills p {
     color: #456882;
+    font-size: clamp(1.3rem, 1vw + .8rem, 1.5rem);
+    font-weight: 500;
 }
-
 
 /* =========================================
    PROJECTS CARDS
@@ -122,7 +142,11 @@ nav {
 }
 
 .card-img {
+    display: block;
+    width: 100%;
+    height: auto;
     transition: transform .4s ease;
+    object-fit: cover;
 }
 
 .card:hover .card-img {
@@ -140,6 +164,7 @@ nav {
     transition: opacity .3s ease;
     color: #F9F3EF;
     text-decoration: none;
+    padding:.5rem 1rem;
 }
 
 .card-image-container::after {
@@ -175,10 +200,10 @@ nav {
 .see-projects {
     text-decoration: none;
     color: #456882;
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 1vw + .8rem, 1.8rem);
     font-weight: 600;
     position: relative;
-    transition: .3s;
+    transition: .3s ease;
 }
 
 .see-projects::after {
@@ -191,12 +216,12 @@ nav {
     background: #1B3C53;
     transform: scaleX(0);
     transform-origin: left;
-    transition: .3s;
+    transition: .3s ease;
 }
 
 .see-projects span {
     display: inline-block;
-    transition: .3s;
+    transition: .3s ease;
 }
 
 .see-projects:hover {
@@ -223,7 +248,7 @@ nav {
 }
 
 .TNG-logo-footer {
-    transition: transform .3s ease;;
+    transition: transform .3s ease;
 }
 
 .svg_logo:hover, .TNG-logo-footer:hover {
@@ -258,7 +283,7 @@ nav {
 
 .contact input:focus,
 .contact textarea:focus {
-    outline-offset: 10px;
+    outline-offset: 7px;
 }
 
 .contact button {
@@ -267,12 +292,13 @@ nav {
     border-radius: 12px;
     border: none;
     outline: 2px solid #456882;
-    transition: transform .4s;
+    transition: transform .4s ease;
     color: #1B3C53;
+
 }
 
 .contact button:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .contact button span {
@@ -303,17 +329,3 @@ nav {
     margin: 2rem auto 0;
     animation: fadeUp .8s ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
