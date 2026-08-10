@@ -9,6 +9,7 @@ from sqlalchemy import Integer, String, Boolean, Text
 import os
 import dotenv
 import smtplib
+import requests
 from email.message import EmailMessage
 
 # =========================================
@@ -18,6 +19,7 @@ dotenv.load_dotenv()
 
 MY_EMAIL = os.environ.get("MY_EMAIL")
 PASSWORD = os.environ.get("PASSWORD")
+TURNSTILE_SECRET = os.environ.get("TURNSTILE_SECRET")
 
 app = Flask(__name__)
 
@@ -78,20 +80,35 @@ def all_projects():
 def contact():
     if request.method == "POST":
         data = request.form
+        turnstile_token = request.form.get("cf-turnstile-response")
+
+        if not turnstile_token or not verify_turnstile(turnstile_token):
+            return render_template("contact.html",show_success=False,error=True)
 
         if send_email(data):
             return redirect(url_for("contact", sent=1))
 
-        return render_template("contact.html", show_success=False, error=True
-        )
+        return render_template("contact.html", show_success=False, error=True)
 
     return render_template(
-        "contact.html", show_success=request.args.get("sent"), error=False
-    )
+        "contact.html", show_success=request.args.get("sent"), error=False)
 
 # =========================================
 # HELPER FUNCTION
 # =========================================
+def verify_turnstile(token):
+    response = requests.post(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        data={
+            "secret": TURNSTILE_SECRET,
+            "response": token
+        },
+        timeout=10
+    )
+
+    result = response.json()
+    return result.get("success", False)
+
 def send_email(data):
     try:
         email = EmailMessage()

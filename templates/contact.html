@@ -44,6 +44,9 @@ Contact Me | Tomáš Nguyen
                               rows="6"
                               placeholder="Write your message..."
                               required></textarea>
+                    <div class="cf-turnstile"
+                         data-sitekey="0x4AAAAAAEMRekym6ILouxjl">
+                    </div>
                     <button type="submit">
                         Send Message <span>📧</span>
                     </button>
@@ -53,4 +56,11 @@ Contact Me | Tomáš Nguyen
         {% endif %}
     </div>
 </section>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async
+        defer></script>
 {% endblock %}
